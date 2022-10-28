@@ -3,25 +3,24 @@
 // October 28, 2022
 
 class StickerObserver{
-    def __init__(self, subject){
+    public StickerObserver(self, subject){
         self.subject = subject;
         subject.add_observer(self);
     }
 
-    def update(self, order){
+    public update(self, order){
        print("Your order for {0} stickers has been placed!".format(order.quantity));
     }
 }
 
 class StickerDecorator{
-
-    def __init__(self, subject){
+    public StickerDecorator(self, subject){
         self.subject = subject;
         subject.add_decorator(self);
     }
  
 
-    def decorate(order) {
+    public decorate(order) {
        print("Your order for {0} stickers has been decorated!".format(order.quantity));
     }
 }
@@ -29,40 +28,40 @@ class StickerDecorator{
 class StickerOrder{
     int observer;
 
-    def __init__(self, quantity){
+    public StickerOrder(self, quantity){
         self.quantity = quantity;
         self.observers = "";
         self.decorators = "";
     }
 
-    def add_observer(self, observer){
+    public add_observer(self, observer){
        self.observers.append(observer);
     }
 
  
 
-    def add_decorator(self, decorator){
+    public add_decorator(self, decorator){
 
        self.decorators.append(decorator);
     }
 
  
 
-    def place(){
-        for observer in self.observers{
+    public place(){
+        for (observer : self.observers){
            observer.update(self);
         }
 
-        for decorator in self.decorators{
+        for (decorator : self.decorators){
            decorator.decorate(self);
         }
     }
 
-    if (__name__ == "__main__") {
-        System.out.println("Ordering five stickers this moment...");
+    public void main(String args[])
+        System.out.print("Ordering five stickers this moment...");
         order = StickerOrder(5);
-        observer = StickerObserver(order);
-        decorator = StickerDecorator(order);
+        int observer = StickerObserver();
+        decorator = StickerDecorator();
         order.place();
     }
 }
